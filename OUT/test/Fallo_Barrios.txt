@@ -1,4 +1,4 @@
-categoría: actualizacion en daños
+categoria: test
 
 Suprema Corte de Justicia
 Provincia de Buenos Aires

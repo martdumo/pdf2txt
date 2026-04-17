@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Conversor automático PDF/DOCX a TXT con categoría.
+Conversor automático PDF/DOCX a TXT con categoria.
 Procesa todos los archivos dentro de la carpeta 'IN' (junto al script)
 y guarda los resultados en la carpeta 'OUT' manteniendo la estructura.
 """
@@ -62,7 +62,7 @@ def convertir_archivo(ruta_archivo, carpeta_base_entrada, carpeta_base_salida):
     """
     Convierte un archivo PDF/DOCX a TXT, guardándolo en la carpeta de salida
     con la misma estructura relativa que tiene respecto a carpeta_base_entrada.
-    Añade al inicio del TXT: "categoría: ruta/relativa/de/la/carpeta"
+    Añade al inicio del TXT: "categoria: ruta/relativa/de/la/carpeta"
     """
     ext = ruta_archivo.suffix.lower()
     if ext == ".pdf":
@@ -82,7 +82,7 @@ def convertir_archivo(ruta_archivo, carpeta_base_entrada, carpeta_base_salida):
         print(f"  [!] No se pudo calcular ruta relativa para {ruta_archivo}")
         return
 
-    # La categoría es la carpeta contenedora (sin el nombre del archivo)
+    # La categoria es la carpeta contenedora (sin el nombre del archivo)
     categoria_relativa = ruta_relativa.parent
     if str(categoria_relativa) == ".":
         categoria = "Raíz"
@@ -97,13 +97,13 @@ def convertir_archivo(ruta_archivo, carpeta_base_entrada, carpeta_base_salida):
     ruta_salida.parent.mkdir(parents=True, exist_ok=True)
 
     # Contenido final del TXT
-    contenido_final = f"categoría: {categoria}\n\n{texto}"
+    contenido_final = f"categoria: {categoria}\n\n{texto}"
 
     # Guardar con UTF-8
     try:
         with open(ruta_salida, "w", encoding="utf-8") as f:
             f.write(contenido_final)
-        print(f"  [+] Creado: {ruta_salida.relative_to(carpeta_base_salida)}  (categoría: {categoria})")
+        print(f"  [+] Creado: {ruta_salida.relative_to(carpeta_base_salida)}  (categoria: {categoria})")
     except Exception as e:
         print(f"  [!] Error guardando TXT: {e}")
 
